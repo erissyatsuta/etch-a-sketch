@@ -1,0 +1,14 @@
+.cell {
+    display: inline-block;
+    background-color: lightgray;
+}
+
+.row {
+    display: block;
+    font-size: 0px;
+}
+
+#grid {
+    width: 900px;
+    height: 900px;
+}

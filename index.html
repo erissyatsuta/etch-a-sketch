@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <link href="styles/main.css" rel="stylesheet">
+
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <button>Clear Grid</button>
+        <div id="grid"></div>
+
+        <script>
+            let grid = document.querySelector("#grid");
+            const GRID_SIZE_IN_PIXELS = 900;
+            let gridSizeInCells = 30;
+
+            function createGrid() {
+                grid.innerHTML = "";
+                for (let i = 0; i < gridSizeInCells; i++) {
+                    const row = document.createElement("div");
+                    row.classList.add("row");
+                    for (let j = 0; j < gridSizeInCells; j++) {
+                        const cell = document.createElement("div");
+                        cell.style['width'] = cell.style['height'] = `${GRID_SIZE_IN_PIXELS / gridSizeInCells}px`;
+                        cell.addEventListener("mouseover", function(e) {
+                            e.target.style['background-color'] = "gray";
+                            
+                        })
+                        cell.classList.add("cell");
+                        row.appendChild(cell);
+                    }
+                    grid.appendChild(row);
+                }
+            }
+
+            createGrid();
+
+            const button = document.querySelector("button");
+            button.addEventListener("click", () => {
+                gridSizeInCells = Math.min(100, (prompt("Enter Grid Size (no more than 100)")));
+                createGrid();
+            })
+        </script>
+    </body>
+</html>
