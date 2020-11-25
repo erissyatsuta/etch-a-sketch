@@ -11,17 +11,20 @@
 
         <script>
             let grid = document.querySelector("#grid");
-            const GRID_SIZE_IN_PIXELS = 900;
-            let gridSizeInCells = 30;
+            let gridSizeInCells = 16;
 
             function createGrid() {
                 grid.innerHTML = "";
                 for (let i = 0; i < gridSizeInCells; i++) {
                     const row = document.createElement("div");
+                    row.style.width = "100%";
+                    row.style.height = `${100 / gridSizeInCells}%`;
                     row.classList.add("row");
                     for (let j = 0; j < gridSizeInCells; j++) {
                         const cell = document.createElement("div");
-                        cell.style['width'] = cell.style['height'] = `${GRID_SIZE_IN_PIXELS / gridSizeInCells}px`;
+                        cell.style.height = "100%";
+                        cell.style.width = `${100 / gridSizeInCells}%`
+                        
                         cell.addEventListener("mouseover", function(e) {
                             e.target.style['background-color'] = "gray";
                             
